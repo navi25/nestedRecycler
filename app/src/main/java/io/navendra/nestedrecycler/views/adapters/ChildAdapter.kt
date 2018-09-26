@@ -10,9 +10,12 @@ import io.navendra.nestedrecycler.R
 import io.navendra.nestedrecycler.models.ChildModel
 import kotlinx.android.synthetic.main.child_recycler.view.*
 
-class ChildAdapter(private val children : List<ChildModel>) : RecyclerView.Adapter<ChildAdapter.ViewHolder>(){
+class ChildAdapter(private val children : List<ChildModel>)
+    : RecyclerView.Adapter<ChildAdapter.ViewHolder>(){
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v =  LayoutInflater.from(parent.context).inflate(R.layout.child_recycler,parent,false)
+        val v =  LayoutInflater.from(parent.context)
+                      .inflate(R.layout.child_recycler,parent,false)
         return ViewHolder(v)
     }
 

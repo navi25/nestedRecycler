@@ -12,6 +12,9 @@ import io.navendra.nestedrecycler.models.ParentModel
 import kotlinx.android.synthetic.main.parent_recycler.view.*
 
 class ParentAdapter(private val parents : List<ParentModel>) : RecyclerView.Adapter<ParentAdapter.ViewHolder>(){
+
+    private val viewPool = RecyclerView.RecycledViewPool()
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.parent_recycler,parent,false)
         return ViewHolder(v)
@@ -27,6 +30,7 @@ class ParentAdapter(private val parents : List<ParentModel>) : RecyclerView.Adap
         holder.recyclerView.apply {
             layoutManager = LinearLayoutManager(holder.recyclerView.context, LinearLayout.HORIZONTAL, false)
             adapter = ChildAdapter(parent.children)
+            recycledViewPool = viewPool
         }
     }
 
